@@ -13,8 +13,24 @@ def print_result(st, response):
     except:
         st.write(response['output'])
 
-input_text = st.text_input("Solutions Architect") 
-if input_text: 
+st.set_page_config(page_title="Scan Resume")
+
+uploaded_file = st.file_uploader("Upload your resume PDF")
+docs = []
+agent = glib.initializeAgent()
+
+if uploaded_file is not None:
     st_callback = StreamlitCallbackHandler(st.container())
-    response = glib.search_jobs(input_text, st_callback)
+    reader = PdfReader(uploaded_file)
+    i = 1
+    for page in reader.pages:
+        docs.append(page.extract_text())
+
+    response = agent({
+            "input": str(docs),
+            "output":"output",
+            "chat_history": [],
+         },
+            callbacks=[st_callback])
     print_result(st,response)
+   
