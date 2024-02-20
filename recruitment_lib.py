@@ -4,6 +4,8 @@ from langchain.chains import ConversationChain
 from langchain.agents import load_tools,initialize_agent, Tool, load_tools
 from langchain_community.tools.google_jobs import GoogleJobsQueryRun
 from langchain_community.utilities.google_jobs import GoogleJobsAPIWrapper
+from dotenv import load_dotenv
+load_dotenv()
 
 def init_llm():
         
@@ -72,8 +74,6 @@ def suggested_jobs(input_text):
 
 
 def get_jobs(jobs):
-
-    os.environ["SERPAPI_API_KEY"] = ""
     tool = GoogleJobsQueryRun(api_wrapper=GoogleJobsAPIWrapper())  
     res =  tool.run(jobs)
     print(res)
@@ -119,6 +119,7 @@ search jobs: Use this to search jobs.
 
 Use the following format:
 Question: the input resume you must scan to suggest jobs
+Thought: you should always think about what to do, Also try to follow All steps mentioned above
 Action: the action to take, should be one of [get suggested jobs, search jobs]
 Action Input: the input to the action
 Observation: the result of the action

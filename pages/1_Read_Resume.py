@@ -17,6 +17,5 @@ if uploaded_file is not None:
     for page in reader.pages:
         docs.append(page.extract_text())
 
-    response = glib.summary_resume_stream(docs, st_callback)
-    st.write(response)
+    st.write(docs)
    
