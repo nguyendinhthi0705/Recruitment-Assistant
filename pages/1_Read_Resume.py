@@ -13,7 +13,6 @@ docs = []
 if uploaded_file is not None:
     st_callback = StreamlitCallbackHandler(st.container())
     reader = PdfReader(uploaded_file)
-    i = 1
     for page in reader.pages:
         docs.append(page.extract_text())
 

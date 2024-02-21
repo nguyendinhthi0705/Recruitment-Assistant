@@ -13,7 +13,7 @@ def print_result(st, response):
     except:
         st.write(response['output'])
 
-input_text = st.text_input("Solutions Architect") 
+input_text = st.text_input("Solutions Architect, Technical Lead") 
 if input_text: 
     st_callback = StreamlitCallbackHandler(st.container())
     response = glib.search_jobs(input_text, st_callback)

@@ -150,13 +150,7 @@ def initializeAgent():
     Tool(
         name="get suggested jobs",
         func=suggested_jobs,
-        description="use this tool get suggested jobs for resume"
-    ),
-    Tool(
-        name="search jobs",
-        func=get_jobs,
-        description="Use this to search jobs"
-    ),
+        description="use this tool get suggested jobs for resume")
 ]
     agent=initialize_agent(
     llm=init_llm(),
@@ -168,29 +162,30 @@ def initializeAgent():
     handle_parsing_errors=True,
     output_key="output",
 )
-    prompt="""\n\nHuman: You are a jobs advisor. Give jobs recommendations for given resume based on following instructions. 
+    prompt="""You are a jobs advisor. Give jobs recommendations for given resume based on following instructions. 
 <instructions>
     Answer the following questions as best as you can. You have access to the following tools:
-        get suggested jobs: use this tool get suggested jobs for a input resume.
-        search jobs: Use this to search jobs.
+      get suggested jobs: use this tool get suggested jobs for a input resume.
 </instructions>
 
 <steps>
-    1) Use "get suggested jobs" tool get suggested jobs for a input resume. Output- suggested jobs
-    2) Use "search jobs" tool to search suggested jobs. Output- List of Jobs
+    1) Use "get suggested jobs" tool get suggested jobs for a input resume. Output- job title
 </steps>
 
 Use the following format:
 Question: the input resume you must scan to suggest jobs
-Thought: you should always think about what to do, Also try to follow All steps mentioned above
-Action: the action to take, should be one of [get suggested jobs, search jobs]
+Thought: you should always think about what to do, Also try to follow steps mentioned above
+Action: the action to take, should be one of [get suggested jobs]
 Action Input: the input to the action
 Observation: the result of the action
+... (this Thought/Action/Action Input/Observation can repeat N times)
 Thought: I now know the final answer
 Final Answer: the final answer to the original input question
- {input}
 
-\n\nAssistant: Search and suggest job for the resume
+\n\nHuman:
+Here is the user question: {input}
+
+\n\nAssistant: 
 {agent_scratchpad}
 
 """
