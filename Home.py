@@ -13,7 +13,12 @@ for message in st.session_state.chat_history:
     with st.chat_message(message["role"]): 
         st.markdown(message["text"]) 
 
-input_text = st.text_input("Viết CV dành cho software developers có 5 năm kinh nghiệm trong lập trình web với reactjs và .NET core") 
+st.markdown("Ask me anything as below samples:") 
+st.markdown("Viết CV dành cho software developers có 5 năm kinh nghiệm trong lập trình web với reactjs và .NET core") 
+st.markdown("Liệt kê 10 câu hỏi dành cho lập trình viên React") 
+st.markdown("Top 10 questions for JavaScript") 
+
+input_text = st.text_input("") 
 if input_text: 
     st_callback = StreamlitCallbackHandler(st.container())
     with st.chat_message("user"): 

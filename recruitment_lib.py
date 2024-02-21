@@ -41,6 +41,24 @@ def get_rag_chat_response(input_text, streaming_callback):
     llm = get_llm(streaming_callback)
     return llm.invoke(input=input_text)
 
+def rewrite_resume(input_text, streaming_callback): 
+    model_parameter = {"temperature": 1, "top_p": 1, "max_tokens_to_sample": 2000}
+    llm = Bedrock(
+        credentials_profile_name=os.environ.get("BWB_PROFILE_NAME"), 
+        region_name=os.environ.get("BWB_REGION_NAME"), 
+        endpoint_url=os.environ.get("BWB_ENDPOINT_URL"), 
+        model_id="anthropic.claude-v2", 
+        model_kwargs=model_parameter,
+        callbacks=[streaming_callback]
+
+        ) 
+    prompt = """Your name is Head Hunter. You are the best recruitment consultant expert, you will rewrite the input resume in better format
+    . You only need to rewrite content and do not give instruction: 
+        \n\nHuman: here is the resume content
+        <text>""" + str(input_text) + """</text>
+    \n\nAssistant: """
+    return llm.invoke(input=prompt)
+
 
 def summary_resume_stream(input_text, streaming_callback): 
     llm = get_llm(streaming_callback)
