@@ -64,7 +64,7 @@ def summary_resume_stream(input_text, streaming_callback):
     llm = get_llm(streaming_callback)
     prompt = """You are the best recruitment consultant expert, you will scan the resume and output concide content for the following informantion: 
         Contact, Experience, Skills, and suggested jobs based on the resume in a bulleted list.
-        Output all content same as input or in Vietnamese with the following format\n\n
+        Output all content same as input language with the following format\n\n
         <format>
          Contact:
          Experience:
@@ -80,12 +80,9 @@ def summary_resume_stream(input_text, streaming_callback):
 
 def suggested_jobs(input_text): 
     llm = init_llm()
-    prompt = """You are the best recruitment consultant expert, you will scan the resume and output concide content for the following informantion: 
-            suggested jobs based on the resume.
-        Output content same as input language as much as you can with the following format\n\n
-        <format>
-         Suggested jobs:
-        </format>
+    prompt = """You are the best recruitment consultant expert, you will scan the resume and output concise content for the following informantion: 
+            suggest jobs based on the resume.
+        Put your response in <response></response> tags
         \n\nHuman: here is the resume content
         <text>""" + input_text + """</text>
     \n\nAssistant: """
