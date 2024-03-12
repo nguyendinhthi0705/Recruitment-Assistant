@@ -11,12 +11,12 @@ load_dotenv()
 
 def init_llm():
         
-    model_parameter = {"temperature": 0, "top_p": 0.5, "max_tokens_to_sample": 2000}
+    model_parameter = {"temperature": 1, "top_p": 1, "max_tokens_to_sample": 2000}
     llm = Bedrock(
         credentials_profile_name=os.environ.get("BWB_PROFILE_NAME"), 
         region_name=os.environ.get("BWB_REGION_NAME"), 
         endpoint_url=os.environ.get("BWB_ENDPOINT_URL"), 
-        model_id="anthropic.claude-v2", 
+        model_id="anthropic.claude-v2:1", 
         model_kwargs=model_parameter,
         ) 
     
@@ -63,14 +63,14 @@ def rewrite_resume(input_text, streaming_callback):
 def summary_resume_stream(input_text, streaming_callback): 
     llm = get_llm(streaming_callback)
     prompt = """You are the best recruitment consultant expert, you will scan the resume and output concide content for the following informantion: 
-        Contact, Experience, Skills, and suggested jobs based on the resume in a bulleted list.
+        Contact, Experience, Skills, and suggested jobs based on the resume in a bulleted list in <respone> tag.
         Output all content same as input language with the following format\n\n
-        <format>
+        <respone>
          Contact:
          Experience:
          Skills:
          Suggested jobs:
-        </format>
+        </respone>
         \n\nHuman: here is the resume content
         <text>""" + str(input_text) + """</text>
     \n\nAssistant: """
