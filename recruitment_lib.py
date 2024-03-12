@@ -16,7 +16,7 @@ def init_llm():
         credentials_profile_name=os.environ.get("BWB_PROFILE_NAME"), 
         region_name=os.environ.get("BWB_REGION_NAME"), 
         endpoint_url=os.environ.get("BWB_ENDPOINT_URL"), 
-        model_id="anthropic.claude-v2:1", 
+        model_id="anthropic.claude-v2", 
         model_kwargs=model_parameter,
         ) 
     
@@ -24,12 +24,12 @@ def init_llm():
 
 def get_llm(streaming_callback):
         
-    model_parameter = {"temperature": 0, "top_p": 0.5, "max_tokens_to_sample": 2000}
+    model_parameter = {"temperature": 1, "top_p": 1, "max_tokens_to_sample": 3000}
     llm = Bedrock(
         credentials_profile_name=os.environ.get("BWB_PROFILE_NAME"), 
         region_name=os.environ.get("BWB_REGION_NAME"), 
         endpoint_url=os.environ.get("BWB_ENDPOINT_URL"), 
-        model_id="anthropic.claude-v2:1", 
+        model_id="anthropic.claude-v2", 
         model_kwargs=model_parameter,
         streaming=True,
         callbacks=[streaming_callback]
@@ -65,13 +65,11 @@ def summary_resume_stream(input_text, streaming_callback):
     prompt = """You are the best recruitment consultant expert, you will scan the resume and output concide content for the following informantion: 
         Contact, Experience, Skills,Certificates and suggested jobs based on the resume in a bulleted list in <response> tag.
         Output all content same as input language with the following format
-        <response>
          Contact:
          Experience:
          Skills:
          Certificates:
          Suggested jobs:
-        </response>
         \n\nHuman: here is the resume content
         <text>""" + str(input_text) + """</text>
     \n\nAssistant: """
