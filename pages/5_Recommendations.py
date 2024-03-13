@@ -31,5 +31,4 @@ if uploaded_file is not None:
             "chat_history": [],
          },
             callbacks=[st_callback])
-    print_result(st,response)
    

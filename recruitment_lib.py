@@ -188,3 +188,11 @@ Here is the user question: {input}
     agent.agent.llm_chain.prompt.template=prompt
     return agent
     
+def query_resume(question, resume, streaming_callback): 
+    llm = get_llm(streaming_callback)
+    prompt = """Human: here is the resume content:
+        <text>""" + str(resume) + """</text>
+        Question: """ + question + """ 
+    \n\nAssistant: """
+
+    return llm.invoke(prompt)
