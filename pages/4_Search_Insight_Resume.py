@@ -15,6 +15,7 @@ st.markdown("Ask me anything as below samples:")
 st.markdown("Does this resume has experience on Reactjs or Angular?") 
 st.markdown("Does this resume has strong experience on backend?") 
 st.markdown("Hồ sơ này có nhiều kĩ năng .NET không?") 
+st.markdown("Does this resume has strong experience on AWS?") 
 
 input_text = st.text_input("") 
 if uploaded_file is not None and input_text:
