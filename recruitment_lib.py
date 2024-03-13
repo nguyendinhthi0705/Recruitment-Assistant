@@ -24,7 +24,7 @@ def init_llm():
 
 def get_llm(streaming_callback):
         
-    model_parameter = {"temperature": 1, "top_p": 1, "max_tokens_to_sample": 3000}
+    model_parameter = {"temperature": 1, "top_p": 0.5, "max_tokens_to_sample": 2000}
     llm = Bedrock(
         credentials_profile_name=os.environ.get("BWB_PROFILE_NAME"), 
         region_name=os.environ.get("BWB_REGION_NAME"), 
