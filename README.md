@@ -12,5 +12,8 @@ Setup <a href='https://docs.aws.amazon.com/cli/latest/userguide/getting-started-
 > pip3 install -r requirements.txt <br />
 > streamlit run Home.py --server.port 8080 <br />
 
+# Architecture
+![Architecture](./Architecture.png)
+
 # Learn more about prompt
 <a href="https://docs.anthropic.com/claude/docs/introduction-to-prompt-design" target="_blank">Introduction to prompt design </a>
