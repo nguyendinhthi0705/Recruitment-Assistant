@@ -17,3 +17,19 @@ Setup <a href='https://docs.aws.amazon.com/cli/latest/userguide/getting-started-
 
 # Learn more about prompt
 <a href="https://docs.anthropic.com/claude/docs/introduction-to-prompt-design" target="_blank">Introduction to prompt design </a>
+
+
+# Demo
+
+## Scan Resume
+[![Scan Resume](http://img.youtube.com/vi/VrUwZdTiUL0/0.jpg)](https://www.youtube.com/watch?v=VrUwZdTiUL0)]
+
+## Analysic Resume
+[![Analysic Resume](http://img.youtube.com/vi/q4C-jrXPZoc/0.jpg)](https://www.youtube.com/watch?v=q4C-jrXPZoc]
+
+## Search Job 
+[![Search Job](http://img.youtube.com/vi/_bvkFHdEGZ0/0.jpg)](https://www.youtube.com/watch?v=_bvkFHdEGZ0)]
+
+## Write Resume
+[![Write Resume](http://img.youtube.com/vi/GrG-gw2LIDI/0.jpg)](https://www.youtube.com/watch?v=GrG-gw2LIDI)]
+
